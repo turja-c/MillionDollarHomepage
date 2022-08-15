@@ -1,0 +1,26 @@
+[   
+    {
+        "name": "crypdough.eth's awesome NFT",
+        "description": "this is the very first nft on the platform!",
+        "backgroundImage": "https://bafybeichl6fninf3qurduxazvd45efbuuqblis5xb5c6zslneukgfp3xey.ipfs.dweb.link/",
+        "cursor": "object"
+    },
+    {
+        "name": "brianhuff.eth's awesome NFT",
+        "description": "this is the second nft on the platform!",
+        "backgroundImage": "https://static1.squarespace.com/static/6050e9a0cefe703b4f20dd0a/t/607bfbb73b6a633d0a8aa0e8/1618738104184/YouTube+Banner.png",
+        "cursor": "crosshair"
+    },
+    {
+        "name": "krinza.eth's awesome NFT",
+        "description": "this is the third nft on the platform!",
+        "backgroundImage": "https://pbs.twimg.com/profile_images/1542544315301462023/6StcHAOE_400x400.jpg",
+        "cursor": "progress"
+    },
+    {
+        "name": "dhai.eth's awesome NFT",
+        "description": "this is the third nft on the platform!",
+        "backgroundImage": "https://pbs.twimg.com/profile_images/1528417091899883520/q7gkQFaw_400x400.jpg",
+        "cursor": "zoom-in"
+    }
+]
