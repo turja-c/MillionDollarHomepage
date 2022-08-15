@@ -96,7 +96,7 @@ const Home: NextPage = () => {
                 return (
                     <div key={index} 
                       style={{
-                        border: "1px solid white", 
+                        // border: "1px solid white", 
                         height: "20px", 
                         width: "20px",
                         backgroundImage: `url("${NFTMetadata[index].backgroundImage}")`,
