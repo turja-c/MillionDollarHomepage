@@ -1,3 +1,4 @@
+import React, {useState, useEffect} from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -7,10 +8,16 @@ import cursor1 from "../assets/cursors/mouse-click-pointer-cursor-arrow-sign.jso
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
+import Tooltip from '@mui/material/Tooltip';
+import { styled } from '@mui/system';
 
 import NFTMetadata from "../data/sampleNFTData.json"
 
+
+
 const Home: NextPage = () => {
+  const [position, setPosition] = useState({ x: undefined, y: undefined });
+
 
   const gridContainer = {
     display: "inline-grid",
@@ -45,6 +52,13 @@ const Home: NextPage = () => {
     // cursor: `${<Lottie animationData={cursor1} loop={true} />}`
   };
 
+  const StyledTooltip = styled(Tooltip)({
+    tooltipPlacementTop: {
+      margin: "4px 0",
+      transform: "scale(2)"
+    },
+  });
+
   return (
     <div className={styles.container}>
       <Head>
@@ -54,9 +68,14 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to MillionDollarHomepage
-        </h1>
+        <StyledTooltip 
+              title="Delete" 
+              followCursor
+            >
+          <h1 className={styles.title}>
+            Welcome to MillionDollarHomepage
+          </h1>
+        </StyledTooltip>
         <div>
         {/* <Box sx={{ flexGrow: 2, p: 2 }}>
           <Grid
@@ -85,40 +104,101 @@ const Home: NextPage = () => {
 
         <hr></hr>
 
+
+      <div style={{
+        transform: "translateX(-50%) scale(1)",
+        position: "absolute",
+        left: "50%",
+      }}>
         <div style={{
           display: "inline-grid",
-          gridTemplateColumns: "repeat(40, 1fr)"
+          gridTemplateColumns: "repeat(100, 1fr)",
           }}
           >
-        {[...Array(100)].map((_, index) => (
+        {[...Array(300)].map((_, index) => (
           <>
             {Object.keys(NFTMetadata).map((item, index) => {
                 return (
-                    <div key={index} 
+                    <>
+                    <Tooltip 
+                      key={index}
+                      title={NFTMetadata[index].description} 
+                      // followCursor
+                       // @ts-ignore
+                      onMouseMove={e => setPosition({ x: e.pageX, y: e.pageY })}
+                      // PopperProps={{
+                      //   anchorEl: {
+                      //     clientHeight: 0,
+                      //     clientWidth: 0,
+                      //     getBoundingClientRect: () => ({
+                      //       // @ts-ignore
+                      //       top: position.y,
+                      //       // @ts-ignore
+                      //       left: position.x * 0.99,
+                      //       // @ts-ignore
+                      //       right: position.x * 2,
+                      //       // @ts-ignore
+                      //       bottom: position.y,
+                      //       width: 0,
+                      //       height: 0,
+                      //     })
+                      //   }
+                      // }}
+                    >
+                    <div 
+                      key={index}
                       style={{
-                        // border: "1px solid white", 
-                        height: "20px", 
-                        width: "20px",
+                        // border: "1px solid white",
+                        height: "10px",
+                        width: "10px",
                         backgroundImage: `url("${NFTMetadata[index].backgroundImage}")`,
                         backgroundRepeat: "round",
-                        cursor: `${NFTMetadata[index].cursor}`
+                        cursor: `${NFTMetadata[index].cursor}`,
+                        scale: "trans"
                       }}
                     >
-                      
                     </div>
+                  </Tooltip>
+                  </>
                 )})
             }
           </>
         ))}
         </div>
+      </div>
 
         <hr></hr>
 
         <Box sx={gridContainer}>
-          {[...Array(10000)].map((_, index) => (
+          {[...Array(100)].map((_, index) => (
             <>
-            <Box key={index} sx={gridItem1}/>
-            <Box key={index} sx={gridItem2}/>
+            <Tooltip 
+              title="Testing"
+              // followCursor
+              // @ts-ignore
+              onMouseMove={e => setPosition({ x: e.pageX, y: e.pageY })}
+              PopperProps={{
+                anchorEl: {
+                  clientHeight: 0,
+                  clientWidth: 0,
+                  getBoundingClientRect: () => ({
+                     // @ts-ignore
+                    top: position.y * 1.1,
+                    // @ts-ignore
+                    left: position.x * 1.28,
+                    // @ts-ignore
+                    right: position.x * 2,
+                    // @ts-ignore
+                    bottom: position.y,
+                    width: 0,
+                    height: 0,
+                  })
+                }
+              }}
+            >
+              <Box key={index} sx={gridItem1}/>
+            </Tooltip>
+            {/* <Box key={index} sx={gridItem2}/> */}
             </>
           ))}
         </Box>
