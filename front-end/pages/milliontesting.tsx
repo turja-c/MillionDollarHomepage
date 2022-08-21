@@ -27,12 +27,12 @@ const MDHGrid: NextPage = ({draw, height, width}: any) => {
     },
   });
 
-  React.useEffect(() => {
-    // @ts-ignore
-    const context = canvas.current.getContext('2d');
-    // @ts-ignore
-    draw(context);
-  })
+  // React.useEffect(() => {
+  //   // @ts-ignore
+  //   const context = canvas.current.getContext('2d');
+  //   // @ts-ignore
+  //   draw(context);
+  // })
 
   return (
     <div className={styles.container}>
